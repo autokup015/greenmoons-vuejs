@@ -1,15 +1,23 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div>
+    <h1>Welcome about pages !</h1>
+
+    <h5>count : {{ countStore.count }}</h5>
+    <h5>double count : {{ countStore.doubleCount }}</h5>
+
+    <button @click="goBackHomePage">go home</button>
   </div>
 </template>
 
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
+<script setup lang="ts">
+import router from '@/router'
+import { useCounterStore } from '@/stores/counter'
+
+const countStore = useCounterStore()
+
+const goBackHomePage = () => {
+  router.push({ path: '/' })
 }
-</style>
+</script>
+
+<style scoped></style>
